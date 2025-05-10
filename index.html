@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Redikland</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap');
 
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to right, #1c1c1c, #2c2c54);
-      color: #f0f0f0;
+      background-color: #333;
+      color: #fff;
       text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
+      overflow-x: hidden;
+      position: relative;
     }
 
     header {
@@ -47,25 +49,97 @@
       transform: scale(1.05);
     }
 
+    .socials {
+      margin-top: 40px;
+    }
+
+    .socials a {
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 24px;
+      color: #fff;
+      transition: 0.3s;
+    }
+
+    .socials a:hover {
+      color: #ff0000;
+    }
+
     footer {
       margin-top: 60px;
       font-size: 14px;
-      color: #888;
+      color: #aaa;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.6;
+      z-index: -1;
+    }
+
+    .red-circle {
+      background-color: red;
+      width: 80px;
+      height: 80px;
+      top: 100px;
+      left: 30px;
+    }
+
+    .green-square {
+      background-color: limegreen;
+      width: 60px;
+      height: 60px;
+      top: 400px;
+      right: 40px;
+      border-radius: 0;
+    }
+
+    .green-circle {
+      background-color: #00ff7f;
+      width: 50px;
+      height: 50px;
+      bottom: 120px;
+      left: 80px;
+    }
+
+    .red-square {
+      background-color: crimson;
+      width: 70px;
+      height: 70px;
+      bottom: 100px;
+      right: 90px;
+      border-radius: 0;
     }
   </style>
 </head>
 <body>
-  <header>Redikland</header>
+
+  <!-- Декорации -->
+  <div class="shape red-circle"></div>
+  <div class="shape green-square"></div>
+  <div class="shape green-circle"></div>
+  <div class="shape red-square"></div>
+
+  <header>Добро пожаловать в Redikland!</header>
+
   <p>
-    Добро пожаловать в Redikland — цифровой мир фантазий, свободы и ярких идей!<br />
-    Здесь ты найдёшь вдохновение, друзей и своё уникальное место. Строй, твори, исследуй.
+    Это уникальный цифровой мир, где фантазия встречает реальность. <br>
+    Redikland — это вселенная творчества, свободы и необычных приключений. <br>
+    Здесь каждый может найти вдохновение, поделиться идеями и стать частью чего-то большего.
   </p>
 
-  <a class="button" href="#start">Войти в мир</a>
+  <a class="button" href="#start">Присоединиться</a>
+
+  <div class="socials">
+    <a href="http://www.youtube.com/@Its_redik" target="_blank">▶️ YouTube</a>
+    <a href="https://discord.gg/Redikland" target="_blank">💬 Discord</a>
+  </div>
 
   <footer>
     © 2025 Redikland. Все права защищены.
   </footer>
 </body>
 </html>
+
 
