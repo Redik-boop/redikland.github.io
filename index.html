@@ -7,6 +7,8 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap');
 
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
@@ -29,10 +31,10 @@
       font-size: 18px;
       max-width: 800px;
       margin: 0 auto 30px;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
-    .button {
+    .button, .copy-btn {
       display: inline-block;
       padding: 12px 24px;
       background-color: #00ffe0;
@@ -42,9 +44,11 @@
       border-radius: 8px;
       text-decoration: none;
       transition: 0.3s;
+      cursor: pointer;
+      margin: 5px;
     }
 
-    .button:hover {
+    .button:hover, .copy-btn:hover {
       background-color: #00cbb6;
       transform: scale(1.05);
     }
@@ -74,60 +78,122 @@
     .shape {
       position: absolute;
       border-radius: 50%;
-      opacity: 0.6;
+      opacity: 0.5;
       z-index: -1;
+      animation: float 6s ease-in-out infinite alternate;
     }
 
-    .red-circle {
-      background-color: red;
-      width: 80px;
-      height: 80px;
-      top: 100px;
-      left: 30px;
+    .red-circle { background: red; width: 60px; height: 60px; top: 100px; left: 30px; animation-delay: 0s; }
+    .green-square { background: limegreen; width: 60px; height: 60px; top: 400px; right: 40px; border-radius: 0; animation-delay: 1s; }
+    .green-circle { background: #00ff7f; width: 50px; height: 50px; bottom: 120px; left: 80px; animation-delay: 2s; }
+    .red-square { background: crimson; width: 70px; height: 70px; bottom: 100px; right: 90px; border-radius: 0; animation-delay: 3s; }
+
+    /* Дополнительные фигуры */
+    .extra1 { background: limegreen; width: 40px; height: 40px; top: 200px; left: 60%; animation-delay: 1.5s; }
+    .extra2 { background: red; width: 50px; height: 50px; bottom: 200px; right: 60%; animation-delay: 2.5s; }
+    .extra3 { background: #00ff7f; width: 30px; height: 30px; top: 500px; left: 20%; animation-delay: 3.5s; }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(20px); }
     }
 
-    .green-square {
-      background-color: limegreen;
-      width: 60px;
-      height: 60px;
-      top: 400px;
-      right: 40px;
-      border-radius: 0;
+    /* Загрузочный экран */
+    #loader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: #111;
+      color: #00ffe0;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      flex-direction: column;
+      font-size: 32px;
+      transition: opacity 1s ease;
     }
 
-    .green-circle {
-      background-color: #00ff7f;
-      width: 50px;
-      height: 50px;
-      bottom: 120px;
-      left: 80px;
+    #loader.fade-out {
+      opacity: 0;
+      pointer-events: none;
     }
 
-    .red-square {
-      background-color: crimson;
-      width: 70px;
-      height: 70px;
-      bottom: 100px;
-      right: 90px;
-      border-radius: 0;
+    .loader-dot {
+      width: 12px;
+      height: 12px;
+      background: #00ffe0;
+      border-radius: 50%;
+      margin: 10px 4px;
+      animation: pulse 1s infinite alternate;
+    }
+
+    .loader-dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .loader-dot:nth-child(2) { animation-delay: 0.2s; }
+    .loader-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.5; }
+      100% { transform: scale(1.5); opacity: 1; }
+    }
+
+    .copied-msg {
+      display: none;
+      margin-top: 10px;
+      color: #00ff7f;
+      font-weight: bold;
+    }
+
+    .copied-msg.show {
+      display: block;
     }
   </style>
 </head>
 <body>
+
+  <!-- Загрузочный экран -->
+  <div id="loader">
+    Redikland загружается...
+    <div class="loader-dots">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+  </div>
 
   <!-- Декорации -->
   <div class="shape red-circle"></div>
   <div class="shape green-square"></div>
   <div class="shape green-circle"></div>
   <div class="shape red-square"></div>
+  <div class="shape extra1"></div>
+  <div class="shape extra2"></div>
+  <div class="shape extra3"></div>
 
   <header>Добро пожаловать в Redikland!</header>
 
   <p>
-    Это уникальный цифровой мир, где фантазия встречает реальность. <br>
-    Redikland — это вселенная творчества, свободы и необычных приключений. <br>
-    Здесь каждый может найти вдохновение, поделиться идеями и стать частью чего-то большего.
+    Redikland — это не просто сервер Minecraft, это целый мир. Мир, где каждый игрок становится частью большой истории. Здесь оживают идеи, строятся города, разыгрываются приключения и рождается настоящая дружба.
   </p>
+
+  <p>
+    На сервере тебя ждут события, квесты, уникальные постройки и атмосфера, которую не найти больше нигде. Мы ценим творчество, свободу и доброе общение. Здесь каждый может быть собой.
+  </p>
+
+  <p>
+    🎮 <strong>Сервер:</strong> <code id="ip">Redikland.aternos.me:15421</code><br>
+    ✅ Поддержка <strong>пиратских клиентов</strong> — можно заходить без лицензии.<br>
+    🕒 Сервер онлайн 24/7, следи за новостями в Discord и на YouTube!
+  </p>
+
+  <button class="copy-btn" onclick="copyIP()">📋 Скопировать IP</button>
+  <div class="copied-msg" id="copied">IP скопирован!</div>
 
   <a class="button" href="#start">Присоединиться</a>
 
@@ -139,7 +205,27 @@
   <footer>
     © 2025 Redikland. Все права защищены.
   </footer>
+
+  <script>
+    // Убираем загрузку
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('fade-out');
+      }, 2500);
+    });
+
+    // Копировать IP
+    function copyIP() {
+      const ipText = document.getElementById("ip").innerText;
+      navigator.clipboard.writeText(ipText).then(() => {
+        const copied = document.getElementById("copied");
+        copied.classList.add("show");
+        setTimeout(() => copied.classList.remove("show"), 2000);
+      });
+    }
+  </script>
 </body>
 </html>
+
 
 
