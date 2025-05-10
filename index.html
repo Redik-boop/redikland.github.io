@@ -1,27 +1,71 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Redikland</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Roboto&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #1c1c1c, #2c2c54);
+      color: #f0f0f0;
       text-align: center;
-      padding: 50px;
+      padding: 40px 20px;
     }
-    h1 {
-      color: #333;
+
+    header {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 48px;
+      color: #00ffe0;
+      margin-bottom: 20px;
     }
+
     p {
       font-size: 18px;
-      color: #666;
+      max-width: 800px;
+      margin: 0 auto 30px;
+      line-height: 1.6;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #00ffe0;
+      color: #1c1c1c;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background-color: #00cbb6;
+      transform: scale(1.05);
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 14px;
+      color: #888;
     }
   </style>
 </head>
 <body>
-  <h1>Добро пожаловать в Redikland!</h1>
-  <p>Это уникальный цифровой мир, где фантазия встречает реальность. Redikland — это вселенная творчества, свободы и необычных приключений. Здесь каждый может найти вдохновение, поделиться идеями и стать частью чего-то большего.</p>
-  <p>Присоединяйся к нам и стань гражданином Redikland!</p>
+  <header>Redikland</header>
+  <p>
+    Добро пожаловать в Redikland — цифровой мир фантазий, свободы и ярких идей!<br />
+    Здесь ты найдёшь вдохновение, друзей и своё уникальное место. Строй, твори, исследуй.
+  </p>
+
+  <a class="button" href="#start">Войти в мир</a>
+
+  <footer>
+    © 2025 Redikland. Все права защищены.
+  </footer>
 </body>
 </html>
+
