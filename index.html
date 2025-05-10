@@ -145,7 +145,30 @@
       }
     }
 
-    /* Дополнительные стили */
+    /* Декорации */
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.5;
+      z-index: -1;
+      animation: float 6s ease-in-out infinite alternate;
+    }
+
+    .red-circle { background: red; width: 60px; height: 60px; top: 100px; left: 30px; animation-delay: 0s; }
+    .green-square { background: limegreen; width: 60px; height: 60px; top: 400px; right: 40px; border-radius: 0; animation-delay: 1s; }
+    .green-circle { background: #00ff7f; width: 50px; height: 50px; bottom: 120px; left: 80px; animation-delay: 2s; }
+    .red-square { background: crimson; width: 70px; height: 70px; bottom: 100px; right: 90px; border-radius: 0; animation-delay: 3s; }
+
+    /* Дополнительные фигуры */
+    .extra1 { background: limegreen; width: 40px; height: 40px; top: 200px; left: 60%; animation-delay: 1.5s; }
+    .extra2 { background: red; width: 50px; height: 50px; bottom: 200px; right: 60%; animation-delay: 2.5s; }
+    .extra3 { background: #00ff7f; width: 30px; height: 30px; top: 500px; left: 20%; animation-delay: 3.5s; }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(20px); }
+    }
+
     .copied-msg {
       display: none;
       margin-top: 10px;
@@ -156,13 +179,27 @@
     .copied-msg.show {
       display: block;
     }
+
+    /* Описание о сервере */
+    section {
+      margin-top: 40px;
+      font-size: 18px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    section h2 {
+      font-family: 'Orbitron', sans-serif;
+      color: #00ffe0;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
 
   <!-- Загрузочный экран -->
   <div id="loader">
-    <div class="loading-ring"></div> <!-- Кольцо вокруг загрузочного экрана -->
+    <div class="loading-ring"></div>
     Redikland загружается...
     <div class="loader-dots">
       <div class="loader-dot"></div>
@@ -187,6 +224,17 @@
     На сервере тебя ждут события, квесты, уникальные постройки и атмосфера, которую не найти больше нигде. Мы ценим творчество, свободу и доброе общение. Здесь каждый может быть собой.
   </p>
 
+  <section>
+    <h2>💡 О сервере</h2>
+    <p>
+      ✅ <strong>Поддержка Bedrock и Java</strong> — заходи с телефона, ПК, любой версии!<br>
+      👥 <strong>Команда проекта:</strong> <br>
+      • 🎩 <strong>Redik</strong> — создатель и вдохновитель сервера. Главный администратор.<br>
+      • 🧠 <strong>NeoForge</strong> — разработчик сайта и помощник по тех. части.<br>
+      • ⚔️ <strong>xzxzvsg</strong> — технический админ и защитник Redikland'а.
+    </p>
+  </section>
+
   <p>
     🎮 <strong>Сервер:</strong> <code id="ip">Redikland.aternos.me:15421</code><br>
     ✅ Поддержка <strong>пиратских клиентов</strong> — можно заходить без лицензии.<br>
@@ -208,14 +256,12 @@
   </footer>
 
   <script>
-    // Убираем загрузку
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.getElementById('loader').classList.add('fade-out');
       }, 2500);
     });
 
-    // Копировать IP
     function copyIP() {
       const ipText = document.getElementById("ip").innerText;
       navigator.clipboard.writeText(ipText).then(() => {
